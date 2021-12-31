@@ -18,7 +18,9 @@ const MainHead = () => {
         <Col xs={6} className="d-flex justify-content-center">
           <div className="ml-0 ml-md-3 ml-lg-5">
             <span className="d-none d-md-inline">blog</span>
-            <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Volunteer</Button>
+            <Link to="/volunteer" style={{ textDecoration: 'none' }}>
+              <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Volunteer</Button>
+            </Link>
             <Button variant="success" className="mx-3 d-none d-sm-inline"> Donate</Button>
             <AiOutlineMenu className="d-inline d-md-none cursor" onClick={openSidebar} />
           </div>
