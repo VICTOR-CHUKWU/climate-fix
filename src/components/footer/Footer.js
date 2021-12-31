@@ -5,20 +5,20 @@ import { AiOutlineMail, AiOutlineInstagram, AiOutlineTwitter } from 'react-icons
 import { FaFacebookF } from 'react-icons/fa';
 
 const Footer = () => (
-  <Container fluid className="py-3 shadow bg-white mt-3">
+  <Container fluid className="py-3 shadow bg-white footer">
     <Row className="d-flex justify-content-between align-items-center mx-0 mx-md-5">
-      <Col xs={6} md={4} className="mt-2">
+      <Col xs={6} lg={4} className="mt-2">
         <h4>climate fix</h4>
       </Col>
-      <Col xs={6} md={4} className="d-flex justify-content-center">
+      <Col xs={6} lg={4} className="d-flex justify-content-center">
         <div className="d-flex align-items-center">
-          <AiOutlineMail className="mx-2" />
-          <AiOutlineInstagram className="mx-2" />
-          <AiOutlineTwitter className="mx-2" />
-          <FaFacebookF className="mx-2" />
+          <AiOutlineMail className="mx-2 text-success" />
+          <AiOutlineInstagram className="mx-2 text-success" />
+          <AiOutlineTwitter className="mx-2 text-success" />
+          <FaFacebookF className="mx-2 text-success" />
         </div>
       </Col>
-      <Col xs={6} md={4} className="d-flex justify-content-center">
+      <Col xs={12} lg={4} className="d-flex justify-content-center">
         <div className="d-flex">
           <span className="mx-2 text-success">FAQs</span>
           <span className="mx-2 text-success">Privacy Policy</span>

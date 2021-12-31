@@ -12,8 +12,7 @@ body {
     "Droid Sans",
     "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
   background: #e5e5e5;
 }
 
@@ -112,19 +111,17 @@ body {
   margin-top: 6rem;
 }
 
+.post-slide {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .slide-post-item {
   background: white;
   border-radius: 5px;
   border-radius: 10px;
   padding: 0.2rem;
-  height: 340px;
-
-  /* width: 90%; */
-}
-
-.post-slide {
-  width: 80%;
-  margin: 0 auto;
+  height: 370px;
 }
 
 .image-post-slide {
@@ -144,6 +141,28 @@ body {
   font-size: 1rem;
   margin-left: 0.3rem;
   margin-top: 0;
+}
+
+.min-heigth {
+  min-height: 100vh;
+}
+
+.hr {
+  width: 80%;
+  height: 2px;
+  background: black;
+  margin: 1rem auto;
+}
+
+.image-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.single-post-image {
+  width: 70%;
+  height: 300px;
 }
 
 @media screen and (max-width: 767px) {
@@ -171,5 +190,23 @@ body {
   .details-inner {
     justify-content: center;
     align-items: center;
+  }
+
+  .post-slide {
+    width: 100%;
+  }
+
+  .name-post-slide {
+    text-align: center;
+  }
+
+  .text-post-slide {
+    text-align: center;
+    margin-left: 0.4rem;
+  }
+
+  .single-post-image {
+    width: 90%;
+    height: 300px;
   }
 }
