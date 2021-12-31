@@ -53,3 +53,52 @@ body {
 .cursor {
   cursor: pointer;
 }
+
+.weather-main {
+  width: 70%;
+  margin: 1rem auto;
+  box-shadow:
+    8px 8px 10px rgb(171, 173, 173),
+    -8px -8px 10px rgb(176, 176, 189);
+  border-radius: 10px;
+}
+
+.weather-center {
+  position: relative;
+}
+
+.btn-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.btn-inner-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: auto;
+  border: 2px solid white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-details {
+  position: relative;
+}
+
+.details-inner {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+}
