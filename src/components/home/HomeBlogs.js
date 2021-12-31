@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { Container, Row } from 'react-bootstrap';
-import post from '../../data';
+import { BsShareFill } from 'react-icons/bs';
+import { FcLike } from 'react-icons/fc';
+import { Link } from 'react-router-dom';
+import { FaRegComment, FaChevronRight } from 'react-icons/fa';
+import { posts } from '../../data';
 
 const HomeBlogs = () => (
   <Container className="post-slide">
@@ -8,20 +12,34 @@ const HomeBlogs = () => (
       <div className="uk-slider-container">
         <ul className="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-grid">
           {
-            post.map((posts) => {
+            posts.map((posts) => {
               const {
                 id, image, name, title, quote,
               } = posts;
               return (
-                <li key={id} className="p-2">
+                <li key={id} className="p-0 p-md-2">
                   <div className="slide-post-item shadow">
-                    <img className="image-post-slide" src={image} alt={title} />
-                    <p className="name-post-slide">{name}</p>
-                    <p className="text-post-slide">
+                    <Link to="/post" style={{ textDecoration: 'none' }}>
+                      <img className="image-post-slide" src={image} alt={title} />
+                      <p className="name-post-slide text-dark">{name}</p>
+                      <p className="text-post-slide text-dark">
 
-                      {quote.substring(0, 50)}
-                      ...
-                    </p>
+                        {quote.substring(0, 50)}
+                        ...
+                      </p>
+                      <div className="d-flex align-items-center justify-content-between mx-4">
+                        <div className="d-flex">
+                          <BsShareFill className="text-success mx-2" />
+                          <FcLike className="text-success mx-2" />
+                          <FaRegComment className="text-success mx-2" />
+                        </div>
+                        <div className="text-success">
+                          Read more
+                          {' '}
+                          <FaChevronRight className="text-success mx-2" />
+                        </div>
+                      </div>
+                    </Link>
                   </div>
                 </li>
               );
