@@ -14,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #e5e5e5;
 }
 
 .sidebar {
@@ -109,6 +110,40 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 6rem;
+}
+
+.slide-post-item {
+  background: white;
+  border-radius: 5px;
+  border-radius: 10px;
+  padding: 0.2rem;
+  height: 340px;
+
+  /* width: 90%; */
+}
+
+.post-slide {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.image-post-slide {
+  height: 200px;
+  width: 100%;
+}
+
+.name-post-slide {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 0.3rem;
+}
+
+.text-post-slide {
+  text-align: left;
+  font-size: 1rem;
+  margin-left: 0.3rem;
+  margin-top: 0;
 }
 
 @media screen and (max-width: 767px) {

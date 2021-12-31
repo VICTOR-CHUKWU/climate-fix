@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   Container, Row, Col, Button,
 } from 'react-bootstrap';
