@@ -116,7 +116,6 @@ body {
   margin: 0 auto;
 }
 
-
 .slide-post-item {
   background: white;
   border-radius: 5px;
@@ -200,7 +199,7 @@ body {
   .name-post-slide {
     text-align: center;
   }
-  
+
   .text-post-slide {
     text-align: center;
     margin-left: 0.4rem;
