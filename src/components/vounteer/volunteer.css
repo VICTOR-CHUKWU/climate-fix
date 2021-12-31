@@ -1,0 +1,60 @@
+.volunteer-main {
+  height: 300px;
+  width: 100%;
+}
+
+.volunteer-top {
+  background: white;
+  padding: 1rem;
+}
+
+.upcoming-p {
+  background: white;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  line-height: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-message-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.project-message {
+  font-size: 1rem;
+  width: 70%;
+  margin: 0.5rem auto;
+}
+
+.form-volunteer {
+  width: 50%;
+  margin: 1rem auto;
+}
+
+.text-bold {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 767px) {
+  .project-message {
+    width: 90%;
+  }
+
+  .form-volunteer {
+    width: 80%;
+  }
+
+  .text-bold {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+}
