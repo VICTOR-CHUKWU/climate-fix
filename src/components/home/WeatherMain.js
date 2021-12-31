@@ -5,7 +5,6 @@ const WeatherMain = () => (
   <Container
     className="weather-main"
     style={{
-      height: 300,
       // eslint-disable-next-line global-require
       backgroundImage: `url(${require('../../images/home/climate-home.png')})`,
       backgroundPosition: 'center',
