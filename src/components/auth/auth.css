@@ -1,0 +1,35 @@
+.register {
+  min-height: 80vh;
+}
+
+.auth-image {
+  height: 70vh;
+  width: 100%;
+}
+
+.form-reg {
+  width: 70%;
+  margin: 1rem auto;
+  background: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .register {
+    min-height: 85vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .register {
+    min-height: 80vh;
+  }
+
+  .auth-image {
+    height: 50vh;
+    width: 100%;
+  }
+
+  .form-reg {
+    width: 90%;
+  }
+}

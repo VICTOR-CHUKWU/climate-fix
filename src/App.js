@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
 import SingleBlogPost from './components/blog/SingleBlogPost';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/post" element={<SingleBlogPost />} />
         <Route path="/volunteer" element={<VolunteerMain />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </>
