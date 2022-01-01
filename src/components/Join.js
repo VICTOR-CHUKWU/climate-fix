@@ -1,6 +1,7 @@
 import {
   Container, Row, Col, Button,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Join = () => (
   <Container fluid className="py-1 shadow bg-white">
@@ -10,7 +11,10 @@ const Join = () => (
       </Col>
       <Col xs={12} md={6} className="d-flex justify-content-center">
         <div>
-          <Button variant="outline-success" className="mx-2"> Volunteer</Button>
+          <Link to="/volunteer">
+            {' '}
+            <Button variant="outline-success" className="mx-2"> Volunteer</Button>
+          </Link>
           <Button variant="success" className="mx-2"> Donate</Button>
         </div>
       </Col>
