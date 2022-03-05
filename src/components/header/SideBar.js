@@ -1,6 +1,7 @@
 import {
   Container, Row, Col, Button,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { GiCancel } from 'react-icons/gi';
 import { useGlobalContext } from './HeaderContext';
 
@@ -13,7 +14,7 @@ const SideBar = () => {
         <Row className="text-center">
           <Col xs={12}>
             {' '}
-            <span className="text-primary">blog</span>
+            <Link to="/posts" style={{ textDecoration: 'none' }} className="d-none d-md-inline">blog</Link>
           </Col>
           <Col xs={12}>
             {' '}

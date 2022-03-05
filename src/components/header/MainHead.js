@@ -17,7 +17,7 @@ const MainHead = () => {
         </Col>
         <Col xs={6} className="d-flex justify-content-center">
           <div className="ml-0 ml-md-3 ml-lg-5">
-            <span className="d-none d-md-inline">blog</span>
+            <Link to="/posts" style={{ textDecoration: 'none' }} className="d-none d-md-inline">blog</Link>
             <Link to="/volunteer" style={{ textDecoration: 'none' }}>
               <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Volunteer</Button>
             </Link>

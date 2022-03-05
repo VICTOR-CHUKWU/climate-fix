@@ -8,9 +8,9 @@ import './auth.css';
 const Login = () => (
   <Container
     fluid
-    className="register mt-3"
+    className="register"
   >
-    <Row className="text-center">
+    <Row className="text-center pt-5">
       <Col xs={12} md={6} className="mx-0">
         <img className="auth-image mx-0" src={Bglogo} alt="logo" />
       </Col>
