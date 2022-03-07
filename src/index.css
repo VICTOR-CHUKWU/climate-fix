@@ -210,3 +210,28 @@ body {
     height: 300px;
   }
 }
+
+.refresh {
+  position: relative;
+  margin: 0 1rem;
+ display: flex;
+ align-items: center;
+ justify-content: flex-end;
+}
+
+.refresh button {
+  width: auto;
+  height: 40px;
+  outline: none;
+  border: none;
+  background: rgb(126, 202, 126);
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.refresh button:hover {
+  background: rgb(54, 114, 54);
+ 
+}
