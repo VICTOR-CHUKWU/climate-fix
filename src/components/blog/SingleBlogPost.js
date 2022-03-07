@@ -15,7 +15,7 @@ const SingleBlogPost = () => {
       <Row>
         <Col xs={12} className="my-4">
           <div className="image-container">
-            <img className="single-post-image" src={image} alt={title} fluid />
+            <img className="single-post-image" src={image} alt={title} />
           </div>
         </Col>
         <Col xs={12} lg={6}>

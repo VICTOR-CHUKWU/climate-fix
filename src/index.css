@@ -58,9 +58,7 @@ body {
   width: 70%;
   height: 300px;
   margin: 1rem auto;
-  box-shadow:
-    8px 8px 10px rgb(171, 173, 173),
-    -8px -8px 10px rgb(176, 176, 189);
+  box-shadow: 8px 8px 10px rgb(171, 173, 173), -8px -8px 10px rgb(176, 176, 189);
   border-radius: 10px;
 }
 
@@ -209,4 +207,28 @@ body {
     width: 90%;
     height: 300px;
   }
+}
+
+.refresh {
+  position: relative;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.refresh button {
+  width: auto;
+  height: 40px;
+  outline: none;
+  border: none;
+  background: rgb(126, 202, 126);
+  border-radius: 10px;
+  color: white;
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.refresh button:hover {
+  background: rgb(54, 114, 54);
 }
