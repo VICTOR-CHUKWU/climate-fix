@@ -1,25 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { FaChevronRight } from 'react-icons/fa';
 import { Col, Container, Row } from 'react-bootstrap';
-import { posts } from '../../data';
+// import { posts } from '../../data';
 
-const AllBlog = () => (
-  <Container className="mt-3">
-    <Row>
-      {
-               posts.map((post) => {
+const AllBlog = () => {
+  const [data, setData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts/');
+      const response = api.data;
+      console.log('response', response);
+      setData(response);
+    } catch (e) {
+      console.log('error', e.message);
+      throw e.toString();
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (!data) {
+    return (
+      <h2>Loading</h2>
+    );
+  }
+
+  return (
+    <Container className="mt-3">
+      <Row>
+        {
+               data.map((post) => {
                  const {
-                   id, image, name, title, quote,
-                 } = post;
+                   id, picture, description, title,
+                 } = post.post;
                  return (
                    <Col xs={12} md={6} lg={3} key={id} className="my-2">
                      <div className="shadow mx-1">
-                       <img className="image-post-slide" src={image} alt={name} />
+                       <img className="image-post-slide" src={picture} alt="mne" />
                        <p className="name-post-slide text-dark">{title}</p>
                        <p className="text-post-slide text-dark">
 
-                         {quote.substring(0, 50)}
+                         {description.substring(0, 50)}
                          ...
                        </p>
                        <Link to="/post" style={{ textDecoration: 'none' }}>
@@ -32,8 +56,9 @@ const AllBlog = () => (
                  );
                })
            }
-    </Row>
-  </Container>
-);
+      </Row>
+    </Container>
+  );
+};
 
 export default AllBlog;
