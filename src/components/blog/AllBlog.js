@@ -6,6 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 // import { posts } from '../../data';
 
 const AllBlog = () => {
+  const defaultImage = 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   const [data, setData] = useState([]);
   const fetchData = async () => {
     try {
@@ -14,7 +15,6 @@ const AllBlog = () => {
       console.log('response', response);
       setData(response);
     } catch (e) {
-      console.log('error', e.message);
       throw e.toString();
     }
   };
@@ -22,7 +22,7 @@ const AllBlog = () => {
     fetchData();
   }, []);
 
-  if (!data) {
+  if (Object.keys(data).length === 0) {
     return (
       <h2>Loading</h2>
     );
@@ -39,14 +39,14 @@ const AllBlog = () => {
                  return (
                    <Col xs={12} md={6} lg={3} key={id} className="my-2">
                      <div className="shadow mx-1">
-                       <img className="image-post-slide" src={picture} alt="mne" />
+                       <img className="image-post-slide" src={picture || defaultImage} alt="mne" />
                        <p className="name-post-slide text-dark">{title}</p>
                        <p className="text-post-slide text-dark">
 
                          {description.substring(0, 50)}
                          ...
                        </p>
-                       <Link to="/post" style={{ textDecoration: 'none' }}>
+                       <Link to={`${id}`} style={{ textDecoration: 'none' }}>
                          Read more
                          {' '}
                          <FaChevronRight className="text-success mx-2" />
