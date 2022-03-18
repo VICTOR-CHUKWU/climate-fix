@@ -12,7 +12,6 @@ const AllBlog = () => {
     try {
       const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts/');
       const response = api.data;
-      console.log('response', response);
       setData(response);
     } catch (e) {
       throw e.toString();
