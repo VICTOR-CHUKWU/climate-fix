@@ -30,6 +30,12 @@ const AllBlog = () => {
 
   return (
     <Container className="mt-3">
+      <div className="text-end my-2">
+        <Link to="/newpost" style={{ textDecoration: 'none' }}>
+          {' '}
+          <button type="button" className="btn btn-success"> Create post</button>
+        </Link>
+      </div>
       <Row>
         {
                data.map((post) => {

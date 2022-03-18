@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
 import VolunteerMain from './components/vounteer/VolunteerMain';
+import NewPost from './components/blog/NewPost';
 
 const HeaderFooter = () => (
   <>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/posts/:id" element={<SingleBlogPost />} />
           <Route path="/posts" element={<AllBlog />} />
           <Route path="/volunteer" element={<VolunteerMain />} />
+          <Route path="/newpost" element={<NewPost />} />
         </Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
