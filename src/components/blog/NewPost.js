@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
@@ -15,9 +16,29 @@ const NewPost = () => {
       [name]: value,
     }));
   };
+
+  const createNewPost = async () => {
+    const { title, text, image } = input;
+    if (title === '' || text === '' || image === '') {
+      return;
+    }
+    const resp = await fetch('https://climate-fix-backend.herokuapp.com/users/1/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title,
+        text,
+        image,
+      }),
+    });
+    const data = await resp.text();
+    return data;
+  };
   return (
     <div className="my-2 text-center container-fluid">
-      <Form className="p-3 mx-3">
+      <Form className="p-3 mx-3" onSubmit={createNewPost}>
         <h3 className="text-center text-success mt-5 text-bold">New Post</h3>
         <Form.Group controlId="formBasicName">
           <Form.Label>Title</Form.Label>
