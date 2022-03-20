@@ -83,10 +83,11 @@ const WeatherMain = () => {
                         % chance of rain
                       </h4>
                     </div>
+                    <h5 className="text-white text-left">
+                      {currentWeather.weather[0].description}
+                    </h5>
                   </div>
-                  <h5 className="text-white text-left">
-                    {currentWeather.weather[0].description}
-                  </h5>
+
                 </div>
               </Col>
               {

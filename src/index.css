@@ -23,7 +23,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 3 !important;
+  z-index: 20 !important;
   overflow: hidden;
   transform: translate(-100%);
   transition: all 1s ease-in-out;
@@ -32,7 +32,7 @@ body {
 
 .sidebar-inner {
   position: relative;
-  background: white;
+  background: rgb(211, 206, 206);
   width: 100%;
   height: 50%;
   padding-top: 4rem;
@@ -43,7 +43,7 @@ body {
 }
 
 .click-cancel {
-  color: red;
+  color: rgb(224, 65, 65);
   font-size: 2rem;
   position: absolute;
   right: 1rem;
@@ -55,19 +55,23 @@ body {
   cursor: pointer;
 }
 
+.togglenav {
+  font-size: 2rem;
+}
+
 .weather-main {
   position: relative;
   width: 70%;
   height: 300px;
   min-height: 300px;
-  margin: 1rem auto;
+  margin: 2rem auto;
   box-shadow: 8px 8px 10px rgb(171, 173, 173), -8px -8px 10px rgb(176, 176, 189);
   border-radius: 10px;
 }
 
 .reminder-temp {
   position: absolute;
-  bottom: 0.3rem;
+  top: -2rem;
   width: 90%;
   left: 50%;
   transform: translateX(-50%);
@@ -82,7 +86,7 @@ body {
 }
 
 .reminder-location {
-  top: -2rem;
+  top: -1.5rem;
   position: absolute;
   width: 90%;
   left: 50%;
@@ -100,7 +104,7 @@ body {
 @media screen and (max-width: 1023px) {
   .weather-main {
     width: 90%;
-    height: 350px;
+    height: 400px;
   }
 }
 
@@ -152,6 +156,7 @@ body {
 
 .min-height {
   min-height: 80vh;
+  margin-bottom: 1rem;
 }
 
 .slide-post-item {
@@ -204,28 +209,29 @@ body {
 @media screen and (max-width: 767px) {
   .weather-main {
     width: 90%;
-    height: 450px;
+    height: 350px;
   }
 
   .weather-center {
     max-height: 240px;
-    height: 180px;
+    height: 120px;
   }
 
   .btn-circle {
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
     top: 0;
   }
 
   .btn-inner-circle {
-    width: 160px;
-    height: 160px;
+    width: 100px;
+    height: 100px;
   }
 
   .details-inner {
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
   }
 
   .post-slide {

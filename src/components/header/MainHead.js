@@ -15,8 +15,8 @@ const MainHead = () => {
             <h4>climate fix</h4>
           </Link>
         </Col>
-        <Col xs={8} className="d-flex justify-content-center">
-          <div className="ml-0 ml-md-3 ml-lg-5">
+        <Col xs={8} className="">
+          <div className="ml-0 ml-md-3 ml-lg-5 d-flex justify-content-center">
             <Link to="/posts" style={{ textDecoration: 'none' }} className="d-none d-md-inline">blog</Link>
             <Link to="/login" style={{ textDecoration: 'none' }}>
               <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Login</Button>
@@ -25,7 +25,10 @@ const MainHead = () => {
               <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Volunteer</Button>
             </Link>
             <Button variant="success" className="mx-3 d-none d-sm-inline"> Donate</Button>
-            <AiOutlineMenu className="d-inline d-md-none cursor" onClick={openSidebar} />
+          </div>
+          <div className="d-flex justify-content-end">
+            {' '}
+            <AiOutlineMenu className="d-inline d-md-none cursor togglenav" onClick={openSidebar} />
           </div>
         </Col>
       </Row>
