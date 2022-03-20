@@ -12,7 +12,6 @@ const AllBlog = () => {
     try {
       const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts/');
       const response = api.data;
-      console.log('response', response);
       setData(response);
     } catch (e) {
       throw e.toString();
@@ -22,22 +21,19 @@ const AllBlog = () => {
     fetchData();
   }, []);
 
-  if (Object.keys(data).length === 0) {
-    return (
-      <h2>Loading</h2>
-    );
-  }
-
   return (
-    <Container className="mt-3">
+    <Container className="mt-3 min-height">
       <div className="text-end my-2">
         <Link to="/newpost" style={{ textDecoration: 'none' }}>
           {' '}
           <button type="button" className="btn btn-success"> Create post</button>
         </Link>
       </div>
-      <Row>
-        {
+      {
+        Object.keys(data).length === 0 ? <h2>Loading</h2>
+          : (
+            <Row>
+              {
                data.map((post) => {
                  const {
                    id, picture, description, title,
@@ -62,7 +58,10 @@ const AllBlog = () => {
                  );
                })
            }
-      </Row>
+            </Row>
+          )
+      }
+
     </Container>
   );
 };

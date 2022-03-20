@@ -13,8 +13,10 @@ const Home = () => (
         <HiRefresh />
       </button>
     </div>
-    <WeatherMain />
-    <HomeBlogs />
+    <div className="min-height">
+      <WeatherMain />
+      <HomeBlogs />
+    </div>
   </>
 );
 

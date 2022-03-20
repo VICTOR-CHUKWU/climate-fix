@@ -18,11 +18,9 @@ const Login = () => (
         <Form className="form-reg">
           <h3 className="text-center text-success mt-5 text-bold">Login</h3>
           <Form.Group controlId="formBasicName">
-            <Form.Label>name</Form.Label>
             <Form.Control type="text" placeholder="name" />
           </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group controlId="formBasicEmail" className="my-3">
             <Form.Control type="email" placeholder="Enter email" />
           </Form.Group>
 
