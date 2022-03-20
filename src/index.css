@@ -78,7 +78,7 @@ body {
   color: white;
   font-size: 1rem;
   font-weight: 500;
-  background-color: rgb(112, 194, 166);
+  background-color: rgb(28, 124, 92);
 }
 
 .reminder-location {
@@ -91,7 +91,7 @@ body {
   padding: 0.2rem;
   border-radius: 3px;
   text-align: center;
-  color: white;
+  color: red;
   font-size: 0.85rem;
   font-weight: 500;
   background-color: rgb(112, 194, 166);

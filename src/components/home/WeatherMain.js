@@ -1,5 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
@@ -90,11 +89,16 @@ const WeatherMain = () => {
                   </h5>
                 </div>
               </Col>
-              <Col xs={12} className="reminder-temp">
-                {
-                  currentWeather.main.temp > 25 ? 'The weather is very hot due to human activities on planet earth, we can do better to save our planet' : 'A good weather needs to be maintained by reducing the excess burning of carbon and fossile fuel'
-                }
-              </Col>
+              {
+               lat === '' && long === '' ? ''
+                 : (
+                   <Col xs={12} className="reminder-temp">
+                     {
+                 currentWeather.main.temp > 25 ? 'The weather is very hot due to human activities on planet earth, we can do better to save our planet' : 'A good weather needs to be maintained by reducing the excess burning of carbon and fossile fuel'
+               }
+                   </Col>
+                 )
+             }
             </Row>
           )
       }
