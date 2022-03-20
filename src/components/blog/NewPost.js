@@ -57,13 +57,16 @@ const NewPost = () => {
             name="image"
           />
         </Form.Group>
-        <textarea
-          className="form-control my-4"
-          placeholder="tell us your mind"
-          onChange={handleInput}
-          value={input.text}
-          name="text"
-        />
+        <Form.Group controlId="exampleForm.ControlTextarea1" className=" my-4">
+          <Form.Control
+            as="textarea"
+            rows={3}
+            placeholder="tell us your mind"
+            onChange={handleInput}
+            value={input.text}
+            name="text"
+          />
+        </Form.Group>
 
         <Button variant="success" type="submit" className="my-3">
           Create post

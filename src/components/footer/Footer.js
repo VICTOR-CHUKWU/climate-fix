@@ -4,6 +4,7 @@ import {
 import { Link } from 'react-router-dom';
 import { AiOutlineMail, AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai';
 import { FaFacebookF } from 'react-icons/fa';
+import logo from '../../images/logo.jpeg';
 
 const Footer = () => (
   <Container fluid className="py-3 shadow bg-white footer">
@@ -11,7 +12,7 @@ const Footer = () => (
       <Col xs={6} lg={4} className="mt-2">
         <Link to="/" style={{ textDecoration: 'none' }}>
           {' '}
-          <h4>climate fix</h4>
+          <img src={logo} alt="logo" className="logo" />
         </Link>
       </Col>
       <Col xs={6} lg={4} className="d-flex justify-content-center">

@@ -4,6 +4,7 @@ import {
 import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { useGlobalContext } from './HeaderContext';
+import logo from '../../images/logo.jpeg';
 
 const MainHead = () => {
   const { openSidebar } = useGlobalContext();
@@ -12,7 +13,7 @@ const MainHead = () => {
       <Row className="d-flex justify-content-between align-items-center mx-0 mx-md-5">
         <Col xs={4}>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <h4>climate fix</h4>
+            <img src={logo} alt="logo" className="logo" />
           </Link>
         </Col>
         <Col xs={8} className="">

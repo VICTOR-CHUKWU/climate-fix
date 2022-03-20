@@ -12,6 +12,7 @@ const SingleBlogPost = () => {
   const defaultImage = 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [comment, setComment] = useState('');
   const fetchData = async () => {
     try {
       const api = await axios.get(`https://climate-fix-backend.herokuapp.com/posts/${id}`);
@@ -21,6 +22,12 @@ const SingleBlogPost = () => {
       throw e.toString();
     }
   };
+  const makeComment = () => {
+    if (comment === '') return;
+
+    setComment('');
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -35,22 +42,18 @@ const SingleBlogPost = () => {
                   <img className="single-post-image" src={data.post.picture ? data.post.picture : defaultImage} alt={data?.post.title} />
                 </div>
               </Col>
-              <Col xs={12} lg={6} className="pl-5">
+              <Col xs={12} lg={6} className=" p-2 pl-md-5">
                 <h2>{data?.post.title}</h2>
                 <p>{data?.post.description}</p>
-                <Form>
+                <Form onSubmit={makeComment}>
                   <h3>Leave a Comment</h3>
-                  <Form.Group controlId="formBasicName">
-                    <Form.Label>name</Form.Label>
-                    <Form.Control type="text" placeholder="name" />
-                  </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                  </Form.Group>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      onChange={(e) => setComment(e.target.value)}
+                      value={comment}
+                    />
                   </Form.Group>
 
                   <Button variant="success" type="submit" className="my-3">
@@ -58,7 +61,7 @@ const SingleBlogPost = () => {
                   </Button>
                 </Form>
               </Col>
-              <Col xs={12} lg={6} className="pr-5">
+              <Col xs={12} lg={6} className=" p-2 pr-md-5">
                 <h4>
                   writen by:
                   {' '}

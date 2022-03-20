@@ -26,6 +26,7 @@ const WeatherMain = () => {
     await fetchdata(lat || '0', long || '0');
   }, [lat, long]);
   const backgroundImage = typeof currentWeather.main === 'undefined' ? defaultImage : currentWeather.main.temp < 25 ? vibrantCloud : hotCloud;
+  const classnames = typeof currentWeather.main === 'undefined' ? 'white-text' : currentWeather.main.temp < 25 ? 'green-text' : 'black-text';
   return (
     <Container
       className="weather-main"
@@ -49,7 +50,7 @@ const WeatherMain = () => {
                 <div className="weather-center">
                   <div className="btn-circle">
                     <div className="btn-inner-circle">
-                      <h3 className="text-white">
+                      <h3 className={classnames}>
                         {currentWeather.main.temp}
                         {' '}
                         &deg;C
@@ -62,7 +63,7 @@ const WeatherMain = () => {
                 <div className="details-inner">
                   <div className="d-flex flex-column">
                     <div className="">
-                      <h4 className="text-white mb-3">
+                      <h4 className={`${classnames} mb-3`}>
                         {currentWeather.name}
                         ,
                         {' '}
@@ -77,13 +78,13 @@ const WeatherMain = () => {
                       </h4>
                     </div>
                     <div className="">
-                      <h4 className="text-white mb-0">
+                      <h4 className={`${classnames} mb-2`}>
                         {currentWeather.main.humidity}
                         {' '}
                         % chance of rain
                       </h4>
                     </div>
-                    <h5 className="text-white text-left">
+                    <h5 className={`${classnames} mt-0`}>
                       {currentWeather.weather[0].description}
                     </h5>
                   </div>
