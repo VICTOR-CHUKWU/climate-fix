@@ -9,8 +9,8 @@ import vibrantCloud from '../../images/home/vibrantCloud.avif';
 import hotCloud from '../../images/home/hotCloud.jpg';
 
 const WeatherMain = () => {
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
+  const [lat, setLat] = useState('');
+  const [long, setLong] = useState('');
   const [currentWeather, setCurrentWeather] = useState([]);
 
   const fetchdata = async (lat, long) => {
@@ -24,7 +24,7 @@ const WeatherMain = () => {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-    await fetchdata(lat, long);
+    await fetchdata(lat || '0', long || '0');
   }, [lat, long]);
   const backgroundImage = typeof currentWeather.main === 'undefined' ? defaultImage : currentWeather.main.temp < 25 ? vibrantCloud : hotCloud;
   return (
@@ -41,6 +41,11 @@ const WeatherMain = () => {
         typeof currentWeather.main === 'undefined' ? <h2>Loading</h2>
           : (
             <Row className="">
+              {
+
+                lat === '' && long === '' ? <div className="reminder-location">Kindly allow location to serve you better</div> : ''
+
+              }
               <Col xs={12} md={6}>
                 <div className="weather-center">
                   <div className="btn-circle">
@@ -85,9 +90,9 @@ const WeatherMain = () => {
                   </h5>
                 </div>
               </Col>
-              <Col xs={12} className="bg-success reminder-temp">
+              <Col xs={12} className="reminder-temp">
                 {
-                  currentWeather.main.temp > 25 ? 'try dey jack' : 'take care'
+                  currentWeather.main.temp > 25 ? 'The weather is very hot due to human activities on planet earth, we can do better to save our planet' : 'A good weather needs to be maintained by reducing the excess burning of carbon and fossile fuel'
                 }
               </Col>
             </Row>
