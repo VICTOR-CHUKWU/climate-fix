@@ -1,8 +1,12 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 import fetchWeather from './weatherService';
+import defaultImage from '../../images/home/climate-home.png';
+import vibrantCloud from '../../images/home/vibrantCloud.avif';
+import hotCloud from '../../images/home/hotCloud.jpg';
 
 const WeatherMain = () => {
   const [lat, setLat] = useState([]);
@@ -22,61 +26,74 @@ const WeatherMain = () => {
     });
     await fetchdata(lat, long);
   }, [lat, long]);
-
-  if (typeof currentWeather.main === 'undefined') {
-    return (
-      <h2>Loading</h2>
-    );
-  }
+  const backgroundImage = typeof currentWeather.main === 'undefined' ? defaultImage : currentWeather.main.temp < 25 ? vibrantCloud : hotCloud;
   return (
     <Container
       className="weather-main"
       style={{
-      // eslint-disable-next-line global-require
-        backgroundImage: `url(${require('../../images/home/climate-home.png')})`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
     >
-      <Row className="text-center">
-        <Col xs={12} md={6}>
-          <div className="weather-center">
-            <div className="btn-circle">
-              <div className="btn-inner-circle">
-                <h3 className="text-white">
-                  {currentWeather.main.temp}
-                  {' '}
-                  &deg;C
-                </h3>
-              </div>
-            </div>
-          </div>
-        </Col>
-        <Col xs={12} md={6} className="weather-details">
-          <div className="details-inner">
-            <div className="d-flex">
-              <div className="mr-4">
-                <p className="text-white mb-0">{currentWeather.name}</p>
-                <p className="text-white mt-0">
-                  {moment().format('LL')}
-                </p>
-              </div>
-              <div className="ml-3">
-                <p className="text-white mb-0">
-                  {currentWeather.main.humidity}
-                  {' '}
-                  %
-                </p>
-                <p className="text-white mt-0">chance of rain</p>
-              </div>
-            </div>
-            <h5 className="text-white text-left">
-              {currentWeather.weather[0].description}
-            </h5>
-          </div>
-        </Col>
-      </Row>
+      {
+        typeof currentWeather.main === 'undefined' ? <h2>Loading</h2>
+          : (
+            <Row className="">
+              <Col xs={12} md={6}>
+                <div className="weather-center">
+                  <div className="btn-circle">
+                    <div className="btn-inner-circle">
+                      <h3 className="text-white">
+                        {currentWeather.main.temp}
+                        {' '}
+                        &deg;C
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+              <Col xs={12} md={6} className="weather-details">
+                <div className="details-inner">
+                  <div className="d-flex flex-column">
+                    <div className="">
+                      <h4 className="text-white mb-3">
+                        {currentWeather.name}
+                        ,
+                        {' '}
+                        {currentWeather.sys.country}
+                        {' '}
+                        at
+                        {' '}
+                        {moment().format('LL')}
+                        ,
+                        {' '}
+                        {moment().format('h:mma')}
+                      </h4>
+                    </div>
+                    <div className="">
+                      <h4 className="text-white mb-0">
+                        {currentWeather.main.humidity}
+                        {' '}
+                        % chance of rain
+                      </h4>
+                    </div>
+                  </div>
+                  <h5 className="text-white text-left">
+                    {currentWeather.weather[0].description}
+                  </h5>
+                </div>
+              </Col>
+              <Col xs={12} className="bg-success reminder-temp">
+                {
+                  currentWeather.main.temp > 25 ? 'try dey jack' : 'take care'
+                }
+              </Col>
+            </Row>
+          )
+      }
+
     </Container>
   );
 };

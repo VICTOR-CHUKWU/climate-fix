@@ -13,7 +13,6 @@ const HomeBlogs = () => {
     try {
       const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts/');
       const response = api.data;
-      console.log('response', response);
       setData(response);
     } catch (e) {
       throw e.toString();
@@ -71,7 +70,7 @@ const HomeBlogs = () => {
 
           </div>
         )
-          : <h2>Loading Trending Posts</h2>
+          : <h2 className="text-center text-primary my-4 text-bold">Loading Trending Posts</h2>
       }
     </Container>
   );

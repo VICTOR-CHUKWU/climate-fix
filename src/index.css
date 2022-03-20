@@ -56,11 +56,27 @@ body {
 }
 
 .weather-main {
+  position: relative;
   width: 70%;
   height: 300px;
+  min-height: 300px;
   margin: 1rem auto;
   box-shadow: 8px 8px 10px rgb(171, 173, 173), -8px -8px 10px rgb(176, 176, 189);
   border-radius: 10px;
+}
+
+.reminder-temp {
+  position: absolute;
+  bottom: 0.3rem;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.6rem;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 1023px) {
@@ -113,12 +129,15 @@ body {
 .post-slide {
   width: 80%;
   margin: 0 auto;
+  min-height: 300px;
+}
+
+.min-height {
+  min-height: 80vh;
 }
 
 .slide-post-item {
   background: white;
-  border-radius: 5px;
-  border-radius: 10px;
   padding: 0.2rem;
   height: 370px;
 }
@@ -160,7 +179,7 @@ body {
 }
 
 .single-post-image {
-  width: 70%;
+  width: 60%;
   height: 300px;
 }
 
@@ -205,7 +224,7 @@ body {
   }
 
   .single-post-image {
-    width: 90%;
+    width: 80%;
     height: 300px;
   }
 }

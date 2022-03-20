@@ -41,7 +41,6 @@ const NewPost = () => {
       <Form className="p-3 mx-3" onSubmit={createNewPost}>
         <h3 className="text-center text-success mt-5 text-bold">New Post</h3>
         <Form.Group controlId="formBasicName">
-          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
             placeholder="title"
