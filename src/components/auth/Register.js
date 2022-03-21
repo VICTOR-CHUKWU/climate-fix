@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 're'
 import {
   Col, Container, Row, Button, Form,
 } from 'react-bootstrap';
@@ -10,6 +11,7 @@ const Register = () => {
   const [input, setInput] = useState({
     email: '',
     name: '',
+    password: '',
   });
 
   const handleInput = (event) => {
@@ -21,8 +23,8 @@ const Register = () => {
   };
 
   const handleSubmit = (event) => {
-    const { email, name } = input;
-    if (name && email) {
+    const { email, name, password } = input;
+    if (name && email && password) {
       event.preventDefault();
       return true;
     }
@@ -56,6 +58,16 @@ const Register = () => {
                 onChange={handleInput}
                 value={input.email}
                 name="email"
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicEmail" className="my-3">
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                onChange={handleInput}
+                value={input.password}
+                name="password"
               />
             </Form.Group>
 
