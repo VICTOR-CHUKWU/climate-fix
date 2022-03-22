@@ -40,9 +40,13 @@ const HomeBlogs = () => {
                   } = posts.user;
                   return (
                     <li key={id} className="p-0 p-md-2">
-                      <div className="slide-post-item shadow">
+                      <div className="slide-post-item shadow ">
                         <img className="image-post-slide" src={picture || defaultImage} alt={title} />
-                        <p className="name-post-slide text-dark">{name}</p>
+                        <p className="name-post-slide text-dark">
+                          Written By:
+                          {' '}
+                          {name}
+                        </p>
                         <p className="text-post-slide text-dark">
 
                           {description.substring(0, 50)}

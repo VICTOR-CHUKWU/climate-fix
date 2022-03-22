@@ -14,21 +14,21 @@ const SideBar = () => {
         <Row className="text-center">
           <Col xs={12}>
             {' '}
-            <Link to="/posts" style={{ textDecoration: 'none' }} onClick={closeSidebar}>blog</Link>
-          </Col>
-          <Col xs={12}>
-            {' '}
-            <Link to="/login" style={{ textDecoration: 'none' }} onClick={closeSidebar}>
-              <Button variant="outline-success" className="my-3"> Login</Button>
-            </Link>
+            <Link to="/posts" style={{ textDecoration: 'none' }} onClick={closeSidebar} className="mb-3 nav-text">blog</Link>
           </Col>
           <Col xs={12}>
             {' '}
             <Link to="/volunteer" style={{ textDecoration: 'none' }} onClick={closeSidebar}>
-              <Button variant="outline-success" className="my-3"> Volunteer</Button>
+              <span className="my-5 nav-text"> Volunteer</span>
             </Link>
           </Col>
           <Col xs={12}><Button variant="success" className="my-3"> Donate</Button></Col>
+          <Col xs={12}>
+            {' '}
+            <Link to="/login" style={{ textDecoration: 'none' }} onClick={closeSidebar}>
+              <Button variant="outline-success" className="my-3 "> Login</Button>
+            </Link>
+          </Col>
         </Row>
       </div>
     </Container>

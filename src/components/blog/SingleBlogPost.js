@@ -42,8 +42,8 @@ const SingleBlogPost = () => {
                   <img className="single-post-image" src={data.post.picture ? data.post.picture : defaultImage} alt={data?.post.title} />
                 </div>
               </Col>
-              <Col xs={12} lg={6} className=" p-2 pl-md-5">
-                <h2>{data?.post.title}</h2>
+              <Col xs={12} lg={6} className=" py-2 pl-3 pr-3 pl-md-4 pr-md-4">
+                <h2 className="text-bold">{data?.post.title}</h2>
                 <p>{data?.post.description}</p>
                 <Form onSubmit={makeComment}>
                   <h3>Leave a Comment</h3>
@@ -61,7 +61,7 @@ const SingleBlogPost = () => {
                   </Button>
                 </Form>
               </Col>
-              <Col xs={12} lg={6} className=" p-2 pr-md-5">
+              <Col xs={12} lg={6} className=" py-2 pl-3 pr-3 pr-md-4 pl-md-4">
                 <h4>
                   writen by:
                   {' '}

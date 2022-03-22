@@ -39,10 +39,14 @@ const AllBlog = () => {
                    id, picture, description, title,
                  } = post.post;
                  return (
-                   <Col xs={12} md={6} lg={3} key={id} className="my-2">
-                     <div className="shadow mx-1">
+                   <Col xs={12} md={6} lg={3} key={id} className="my-2 ">
+                     <div className="shadow mx-1 post-cards">
                        <img className="image-post-slide" src={picture || defaultImage} alt="mne" />
-                       <p className="name-post-slide text-dark">{title}</p>
+                       <p className="name-post-slide text-dark text-center">
+                         Title:
+                         {' '}
+                         {title}
+                       </p>
                        <p className="text-post-slide text-dark">
 
                          {description.substring(0, 50)}

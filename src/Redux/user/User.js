@@ -86,7 +86,7 @@ export const hitAPIWithSigninDetails = (details) => async (dispatch) => {
   try {
     const signUpRespons = await axios({
       method: 'post',
-      url: `${baseUrl}/sessions`,
+      url: `${baseUrl}/users/sign_in`,
       user: {
         email,
         name,

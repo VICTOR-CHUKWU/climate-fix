@@ -185,7 +185,21 @@ body {
 .slide-post-item {
   background: white;
   padding: 0.2rem;
-  height: 370px;
+  height: 380px;
+}
+
+.post-cards {
+  height: 390px;
+}
+
+.nav-text {
+  color: rgb(112, 194, 166);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.nav-text:hover {
+  color: rgb(63, 138, 113) !important;
 }
 
 .image-post-slide {
