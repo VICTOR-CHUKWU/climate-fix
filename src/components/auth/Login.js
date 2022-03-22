@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Col, Container, Row, Button, Form,
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Bglogo from '../../images/auth/reg.png';
 import './auth.css';
+import { hitAPIWithSigninDetails } from '../../Redux/user/User';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { loggedIn } = state.user;
   const [input, setInput] = useState({
     email: '',
     name: '',
   });
 
+  // eslint-disable-next-line no-unused-vars
+  const [signedInSuccess, setSignedInSuccess] = useState(loggedIn);
   const handleInput = (event) => {
     const { name, value } = event.target;
     setInput((prevInput) => ({
@@ -24,10 +32,19 @@ const Login = () => {
     const { email, name } = input;
     if (name && email) {
       event.preventDefault();
+      dispatch(hitAPIWithSigninDetails({ email, name }));
       return true;
     }
     return false;
   };
+  useEffect(() => {
+    if (loggedIn === 'in') {
+      navigate('/posts', { replace: true });
+    }
+    if (loggedIn === 'err') {
+      setSignedInSuccess(loggedIn);
+    }
+  }, [state]);
   return (
     <Container
       fluid

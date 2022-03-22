@@ -48,19 +48,16 @@ export const userReducer = (state = initialState, action) => {
 };
 
 const hitAPIWithSignupDetails = (details) => async (dispatch) => {
-  const { name, email, password } = details;
+  const { name, email } = details;
   try {
     await axios({
       method: 'post',
-      url: `${baseUrl}/registrations`,
-      data: {
-        user: {
-          name,
-          email,
-          password,
-        },
+      url: `${baseUrl}/users`,
+      user: {
+        name,
+        email,
       },
-    });
+    }, { withCredentials: true });
 
     dispatch(
       signUp({
@@ -85,16 +82,14 @@ const hitAPIWithSignupDetails = (details) => async (dispatch) => {
 };
 
 export const hitAPIWithSigninDetails = (details) => async (dispatch) => {
-  const { email, password } = details;
+  const { email, name } = details;
   try {
     const signUpRespons = await axios({
       method: 'post',
-      url: `${process.env.REACT_APP_LOGIN_ENDPOINT}`,
-      data: {
-        user: {
-          email,
-          password,
-        },
+      url: `${baseUrl}/sessions`,
+      user: {
+        email,
+        name,
       },
     });
 

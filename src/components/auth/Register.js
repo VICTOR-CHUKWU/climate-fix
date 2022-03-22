@@ -1,17 +1,29 @@
-import { useState } from 'react';
-import { useSelector } from 're'
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Col, Container, Row, Button, Form,
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import hitAPIWithSignupDetails from '../../Redux/user/User';
 import Bglogo from '../../images/auth/reg.png';
 import './auth.css';
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  function goToHomePage() {
+    navigate('/posts', { replace: true });
+  }
+
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.user);
+  const { signedUp } = state;
+  // eslint-disable-next-line no-unused-vars
+  const [signUpSuccess, setSignUpSucess] = useState(signedUp);
+
   const [input, setInput] = useState({
     email: '',
     name: '',
-    password: '',
   });
 
   const handleInput = (event) => {
@@ -23,13 +35,22 @@ const Register = () => {
   };
 
   const handleSubmit = (event) => {
-    const { email, name, password } = input;
-    if (name && email && password) {
+    const { email, name } = input;
+    if (name && email) {
       event.preventDefault();
+      dispatch(hitAPIWithSignupDetails(input));
+
       return true;
     }
     return false;
   };
+  useEffect(() => {
+    setSignUpSucess(() => signedUp);
+    if (signedUp === 'up') {
+      setTimeout(() => goToHomePage(), 3000);
+    }
+  }, [state]);
+
   return (
     <Container
       fluid
@@ -61,7 +82,7 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail" className="my-3">
+            {/* <Form.Group controlId="formBasicEmail" className="my-3">
               <Form.Control
                 type="password"
                 placeholder="Enter password"
@@ -69,7 +90,7 @@ const Register = () => {
                 value={input.password}
                 name="password"
               />
-            </Form.Group>
+            </Form.Group> */}
 
             <Button variant="success" type="submit" className="my-3" onClick={handleSubmit}>
               Create an Account
