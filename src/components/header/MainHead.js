@@ -18,22 +18,22 @@ const MainHead = () => {
         </Col>
         <Col xs={6} className="">
           <div className="ml-0 ml-md-3 ml-lg-5 d-flex align-items-center justify-content-center">
-            <Link to="/posts" style={{ textDecoration: 'none' }} className="d-none d-md-inline nav-text">blog</Link>
+            <Link to="/posts" style={{ textDecoration: 'none' }} className="d-none d-md-inline nav-text">Blog</Link>
             <Link to="/volunteer" style={{ textDecoration: 'none' }}>
               <span className="mx-3 d-none d-md-inline nav-text">Volunteer</span>
             </Link>
-            <Button variant="success" className="mx-3 d-none d-sm-inline"> Donate</Button>
-          </div>
-          <div className="d-flex justify-content-end">
-            {' '}
-            <AiOutlineMenu className="d-inline d-md-none cursor togglenav" onClick={openSidebar} />
+            <Button variant="success" className="mx-3 d-none d-sm-inline btn-nav"> Donate</Button>
           </div>
         </Col>
         <Col xs={2} className="">
           <div className="ml-0 ml-md-3 ml-lg-5 d-flex justify-content-center">
             <Link to="/login" style={{ textDecoration: 'none' }}>
-              <Button variant="outline-success" className="mx-3 d-none d-md-inline"> Login</Button>
+              <Button variant="outline-success" className="mx-3 d-none d-md-inline btn-nav"> Login</Button>
             </Link>
+          </div>
+          <div className="d-flex justify-content-end">
+            {' '}
+            <AiOutlineMenu className="d-inline d-md-none cursor togglenav" onClick={openSidebar} />
           </div>
         </Col>
       </Row>

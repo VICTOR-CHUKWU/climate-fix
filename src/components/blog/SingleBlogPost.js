@@ -42,10 +42,10 @@ const SingleBlogPost = () => {
                   <img className="single-post-image" src={data.post.picture ? data.post.picture : defaultImage} alt={data?.post.title} />
                 </div>
               </Col>
-              <Col xs={12} lg={6} className=" py-2 pl-3 pr-3 pl-md-4 pr-md-4">
-                <h2 className="text-bold">{data?.post.title}</h2>
-                <p>{data?.post.description}</p>
-                <Form onSubmit={makeComment}>
+              <Col xs={12} lg={8} className=" py-2 pl-3 pr-3 pl-md-5 pr-md-2">
+                <h2 className="text-bold pl-3">{data?.post.title}</h2>
+                <p className="pl-3">{data?.post.description}</p>
+                <Form onSubmit={makeComment} className="ml-3">
                   <h3>Leave a Comment</h3>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                     <Form.Control
@@ -61,7 +61,7 @@ const SingleBlogPost = () => {
                   </Button>
                 </Form>
               </Col>
-              <Col xs={12} lg={6} className=" py-2 pl-3 pr-3 pr-md-4 pl-md-4">
+              <Col xs={12} lg={4} className=" py-2 pl-3 pr-3 pr-md-2 pl-md-3">
                 <h4>
                   writen by:
                   {' '}
@@ -72,11 +72,14 @@ const SingleBlogPost = () => {
                   <FaFacebookF className="text-success mx-3" />
                   <FaTwitter className="text-success mx-3" />
                 </div>
-                <Join />
                 <div className="hr" />
                 <div className="comments">
                   <h4>comments</h4>
                 </div>
+              </Col>
+              <Col xs={12}>
+                {' '}
+                <Join />
               </Col>
             </Row>
           )

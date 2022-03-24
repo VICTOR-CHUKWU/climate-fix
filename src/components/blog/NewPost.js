@@ -37,13 +37,13 @@ const NewPost = () => {
     return data;
   };
   return (
-    <div className="my-2 text-center container-fluid min-height">
-      <Form className="p-3 mx-3" onSubmit={createNewPost}>
+    <div className="my-2 post-new container min-height">
+      <Form className="p-3 mx-3 form-new" onSubmit={createNewPost}>
         <h3 className="text-center text-success mt-5 text-bold">New Post</h3>
         <Form.Group controlId="formBasicName">
           <Form.Control
             type="text"
-            placeholder="title"
+            placeholder="Title"
             onChange={handleInput}
             value={input.title}
             name="title"
@@ -61,7 +61,7 @@ const NewPost = () => {
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="tell us your mind"
+            placeholder="Tell us your mind"
             onChange={handleInput}
             value={input.text}
             name="text"

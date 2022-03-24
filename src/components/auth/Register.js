@@ -56,9 +56,11 @@ const Register = () => {
       fluid
       className="register"
     >
-      <Row className="text-center pt-5">
-        <Col xs={12} md={6} className="mx-0">
-          <img className="auth-image mx-0" src={Bglogo} alt="logo" />
+      <Row className="text-center pt-5 mx-md-5">
+        <Col xs={12} md={6} className="px-md-4">
+          <div className="auth-image-container">
+            <img className="auth-image mx-0" src={Bglogo} alt="logo" />
+          </div>
         </Col>
         <Col xs={12} md={6} className="bg-white mx-0">
           <Form className="form-reg">

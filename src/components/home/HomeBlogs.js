@@ -24,7 +24,7 @@ const HomeBlogs = () => {
 
   return (
     <Container className="post-slide">
-      <h2 className="text-center">Trending</h2>
+      <h2 className="text-center">Trending Posts</h2>
       {
         Object.keys(data).length > 0 ? (
           <div uk-slider="autoplay: true; autoplay-interval: 3000; finite: false; pause-on-hover: true; animation: kenburns;">
@@ -40,31 +40,36 @@ const HomeBlogs = () => {
                   } = posts.user;
                   return (
                     <li key={id} className="p-0 p-md-2">
-                      <div className="slide-post-item shadow ">
-                        <img className="image-post-slide" src={picture || defaultImage} alt={title} />
-                        <p className="name-post-slide text-dark">
-                          Written By:
-                          {' '}
-                          {name}
-                        </p>
-                        <p className="text-post-slide text-dark">
-
-                          {description.substring(0, 50)}
-                          ...
-                        </p>
-                        <div className="d-flex align-items-center justify-content-between mx-4">
-                          <div className="d-flex">
-                            <BsShareFill className="text-success mx-2" />
-                            <FcLike className="text-success mx-2" />
-                            <FaRegComment className="text-success mx-2" />
+                      <Link to={`posts/${id}`} style={{ textDecoration: 'none' }}>
+                        <div className="slide-post-item shadow ">
+                          <img className="image-post-slide" src={picture || defaultImage} alt={title} />
+                          <div className="elipsis text-dark px-1">
+                            {title}
                           </div>
-                          <Link to={`posts/${id}`} style={{ textDecoration: 'none' }}>
-                            Read more
+                          <div className="elipsis text-dark px-1 my-2">
+                            Written By:
                             {' '}
-                            <FaChevronRight className="text-success mx-2" />
-                          </Link>
+                            {name}
+                          </div>
+                          <p className="text-post-slide text-dark px-1">
+
+                            {description.substring(0, 50)}
+                            ...
+                          </p>
+                          <div className="d-flex align-items-center justify-content-between mx-4">
+                            <div className="d-flex">
+                              <BsShareFill className="text-success mx-2" />
+                              <FcLike className="text-success mx-2" />
+                              <FaRegComment className="text-success mx-2" />
+                            </div>
+                            <span>
+                              Read more
+                              {' '}
+                              <FaChevronRight className="text-success mx-2" />
+                            </span>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     </li>
                   );
                 })

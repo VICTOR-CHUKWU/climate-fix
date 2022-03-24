@@ -52,12 +52,16 @@ const hitAPIWithSignupDetails = (details) => async (dispatch) => {
   try {
     await axios({
       method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       url: `${baseUrl}/users`,
       user: {
         name,
         email,
+        paswword: '1234567',
       },
-    }, { withCredentials: true });
+    });
 
     dispatch(
       signUp({
@@ -90,6 +94,7 @@ export const hitAPIWithSigninDetails = (details) => async (dispatch) => {
       user: {
         email,
         name,
+        paswword: '1234567',
       },
     });
 

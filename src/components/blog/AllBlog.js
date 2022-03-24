@@ -40,24 +40,26 @@ const AllBlog = () => {
                  } = post.post;
                  return (
                    <Col xs={12} md={6} lg={3} key={id} className="my-2 ">
-                     <div className="shadow mx-1 post-cards">
-                       <img className="image-post-slide" src={picture || defaultImage} alt="mne" />
-                       <p className="name-post-slide text-dark text-center">
-                         Title:
-                         {' '}
-                         {title}
-                       </p>
-                       <p className="text-post-slide text-dark">
+                     <Link to={`${id}`} style={{ textDecoration: 'none' }}>
+                       <div className="shadow mx-1 post-cards">
+                         <img className="image-post-slide" src={picture || defaultImage} alt="mne" />
+                         <div className="elipsis text-dark px-1 mt-2">
+                           Title:
+                           {' '}
+                           {title}
+                         </div>
+                         <p className="text-post-slide text-dark">
 
-                         {description.substring(0, 50)}
-                         ...
-                       </p>
-                       <Link to={`${id}`} style={{ textDecoration: 'none' }}>
-                         Read more
-                         {' '}
-                         <FaChevronRight className="text-success mx-2" />
-                       </Link>
-                     </div>
+                           {description.substring(0, 50)}
+                           ...
+                         </p>
+                         <span className="absolute-readmore">
+                           Read more
+                           {' '}
+                           <FaChevronRight className="text-success mx-2" />
+                         </span>
+                       </div>
+                     </Link>
                    </Col>
                  );
                })
