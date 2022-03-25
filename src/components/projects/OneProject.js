@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 import {
   Col, Container, Row, Form, Button,
 } from 'react-bootstrap';
@@ -9,6 +10,7 @@ import {
 const SingleBlogPost = () => {
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [donate, setDonate] = useState(false);
   const fetchData = async () => {
     try {
       const api = await axios.get(`https://climate-fix-backend.herokuapp.com/projects/${id}`);
@@ -40,19 +42,32 @@ const SingleBlogPost = () => {
                   <p className="align-center">
                     project starts:
                     {' '}
-                    {data.start_date}
+                    {moment.utc(data.start_date).format('MM/DD/YYYY')}
                   </p>
                   <p className="align-center">
                     project ends:
                     {' '}
-                    {data.end_date}
+                    {moment.utc(data.end_date).format('MM/DD/YYYY')}
                   </p>
                 </div>
                 <div className="py-3 d-flex justify-content-center">
-                  <Button>Donate</Button>
+                  <Button onClick={() => setDonate(!donate)}>
+                    { donate ? 'Close' : 'Donate'}
+                  </Button>
                 </div>
 
               </Col>
+
+              {
+                donate ? (
+                  <Col xs={12} className="text-center">
+                    <h3>Accoun No: 3055662029</h3>
+                    <h3>Account Name: Chukwu Victor</h3>
+                    <h3>Bank: First Bank</h3>
+                  </Col>
+                )
+                  : ''
+              }
 
             </Row>
           )

@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import axios from 'axios';
 import { FaChevronRight } from 'react-icons/fa';
 import { Col, Container, Row } from 'react-bootstrap';
-// import { posts } from '../../data';
 
 const AllBlog = () => {
   const [data, setData] = useState([]);
@@ -32,7 +32,8 @@ const AllBlog = () => {
                  const {
                    id, picture, description, location, start_date, end_date,
                  } = project;
-                 //  const dateStart = new Date(start_date);
+                 const dateStart = moment.utc(start_date).format('MM/DD/YYYY');
+                 const dateEnd = moment.utc(end_date).format('MM/DD/YYYY');
                  return (
                    <Col xs={12} md={6} lg={4} key={id} className="my-2 ">
                      <Link to={`${id}`} style={{ textDecoration: 'none' }}>
@@ -52,12 +53,12 @@ const AllBlog = () => {
                            <p className="text-dark project-date">
                              project starts:
                              {' '}
-                             {start_date}
+                             {dateStart}
                            </p>
                            <p className="text-dark project-date">
                              project ends:
                              {' '}
-                             {end_date}
+                             {dateEnd}
                            </p>
                          </div>
                          <span className="absolute-readmore">

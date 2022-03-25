@@ -22,7 +22,11 @@ const SideBar = () => {
               <span className="my-5 nav-text text-bold"> Volunteer</span>
             </Link>
           </Col>
-          <Col xs={12}><Button variant="success" className="my-4 btn-nav"> Donate</Button></Col>
+          <Col xs={12}>
+            <Link to="/projects" style={{ textDecoration: 'none' }} onClick={closeSidebar}>
+              <Button variant="success" className="my-4 btn-nav"> Donate</Button>
+            </Link>
+          </Col>
           <Col xs={12}>
             {' '}
             <Link to="/login" style={{ textDecoration: 'none' }} onClick={closeSidebar}>

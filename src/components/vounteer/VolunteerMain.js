@@ -1,15 +1,16 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 import {
   Col, Button, Row,
 } from 'react-bootstrap';
-
-import VolunteerTop from './VolunteerTop';
 import './volunteer.css';
 
 const VolunteerMain = () => {
   const [data, setData] = useState([]);
+  const [donate, setDonate] = useState(false);
   const fetchData = async () => {
     try {
       const api = await axios.get('https://climate-fix-backend.herokuapp.com/projects');
@@ -35,12 +36,9 @@ const VolunteerMain = () => {
          } = item;
          return (
            <section key={id}>
-             <VolunteerTop />
-             <section
-               fluid
+             <div
                className="volunteer-main"
                style={{
-                 // eslint-disable-next-line global-require
                  backgroundImage: `url(${picture})`,
                  backgroundPosition: 'center',
                  backgroundSize: 'cover',
@@ -49,35 +47,55 @@ const VolunteerMain = () => {
              >
                <Row className="text-center">
                  <Col xs={12} md={6}>
-                   <div className="upcoming-p text-success">Upcoming Project</div>
+                   <Link to="/projects" style={{ textDecoration: 'none' }}>
+                     <div className="upcoming-p text-success">Upcoming Project</div>
+                   </Link>
                  </Col>
                </Row>
-             </section>
-             <Row className="text-center">
-               <Col xs={12}>
-                 <div className="text-success project-message-title mt-5 mb-3">{name}</div>
-                 <div className="text-success project-message-title mt-5 mb-3">{location}</div>
-               </Col>
-               <Col xs={12}>
-                 <div className="text-success project-message">
-                   {description}
-
-                 </div>
-                 <div className="project-date">
-                   Project starts:
-                   {' '}
-                   {start_date}
-                 </div>
-                 <div className="project-date">
-                   Project ends:
-                   {' '}
-                   {end_date}
-                 </div>
-               </Col>
-             </Row>
-             <div className="d-flex justify-content-center">
-               <Button>Donate</Button>
              </div>
+             <div className="text-center">
+               <div className="text-success project-message-title mt-2 mb-2">
+                 Project Title:
+                 {' '}
+                 {name}
+               </div>
+               <div className="text-success project-message-title mt-2 mb-2">
+                 Location:
+                 {' '}
+                 {location}
+               </div>
+             </div>
+             <div>
+               <div className="text-success project-message">
+                 {description}
+
+               </div>
+               <div className="project-date">
+                 Project starts:
+                 {' '}
+                 {moment.utc(start_date).format('MM/DD/YYYY')}
+               </div>
+               <div className="project-date">
+                 Project ends:
+                 {' '}
+                 {moment.utc(end_date).format('MM/DD/YYYY')}
+               </div>
+             </div>
+
+             <div className="d-flex justify-content-center my-2">
+               <Button onClick={() => setDonate(!donate)}>Donate</Button>
+             </div>
+             {
+                donate ? (
+                  <div className="text-center">
+                    <h3>Accoun No: 3055662029</h3>
+                    <h3>Account Name: Chukwu Victor</h3>
+                    <h3>Bank: First Bank</h3>
+                  </div>
+                )
+                  : ''
+              }
+
            </section>
          );
        })

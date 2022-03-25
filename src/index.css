@@ -64,6 +64,11 @@ body {
   font-size: 1rem;
 }
 
+.volunteer-main {
+  margin: 0 auto;
+  width: 70%;
+}
+
 .btn-nav {
   width: 80px;
 }
@@ -275,10 +280,6 @@ body {
   margin-top: 0;
 }
 
-.min-heigth {
-  min-height: 100vh;
-}
-
 .hr {
   width: 80%;
   height: 2px;
@@ -301,6 +302,15 @@ body {
   .weather-main {
     width: 90%;
     height: 350px;
+  }
+
+  .min-heigth {
+    min-height: 80vh;
+  }
+
+  .volunteer-main {
+    margin: 0 auto;
+    width: 90%;
   }
 
   .sidebar {
