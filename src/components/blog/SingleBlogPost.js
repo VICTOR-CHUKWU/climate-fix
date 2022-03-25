@@ -9,6 +9,8 @@ import {
 import Join from '../Join';
 
 const SingleBlogPost = () => {
+  const user = JSON.parse(window.localStorage.getItem('someRandomVitalData'));
+  const { userId } = user.mainUser;
   const defaultImage = 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -45,21 +47,26 @@ const SingleBlogPost = () => {
               <Col xs={12} lg={8} className=" py-2 pl-3 pr-3 pl-md-5 pr-md-2">
                 <h2 className="text-bold pl-3">{data?.post.title}</h2>
                 <p className="pl-3">{data?.post.description}</p>
-                <Form onSubmit={makeComment} className="ml-3">
-                  <h3>Leave a Comment</h3>
-                  <Form.Group controlId="exampleForm.ControlTextarea1">
-                    <Form.Control
-                      as="textarea"
-                      rows={3}
-                      onChange={(e) => setComment(e.target.value)}
-                      value={comment}
-                    />
-                  </Form.Group>
+                {
+                  userId === 'undefined' ? ''
+                    : (
+                      <Form onSubmit={makeComment} className="ml-3">
+                        <h3>Leave a Comment</h3>
+                        <Form.Group controlId="exampleForm.ControlTextarea1">
+                          <Form.Control
+                            as="textarea"
+                            rows={3}
+                            onChange={(e) => setComment(e.target.value)}
+                            value={comment}
+                          />
+                        </Form.Group>
 
-                  <Button variant="success" type="submit" className="my-3">
-                    Submit
-                  </Button>
-                </Form>
+                        <Button variant="success" type="submit" className="my-3">
+                          Submit
+                        </Button>
+                      </Form>
+                    )
+                }
               </Col>
               <Col xs={12} lg={4} className=" py-2 pl-3 pr-3 pr-md-2 pl-md-3">
                 <h4>

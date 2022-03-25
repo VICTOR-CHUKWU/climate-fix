@@ -40,6 +40,12 @@ body {
   background: lightgray;
 }
 
+.project-date {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
 .sidebar-inner {
   position: relative;
   background: rgb(211, 206, 206);
@@ -50,6 +56,12 @@ body {
 
 .show-side-bar {
   transform: translate(0);
+}
+
+.align-center {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .btn-nav {
@@ -207,11 +219,16 @@ body {
   text-align: left;
   font-size: 1rem;
   font-weight: 700;
-  margin-left: 0.3rem;  
+  margin-left: 0.3rem;
 }
 
 .post-cards {
   height: 350px;
+  position: relative;
+}
+
+.project-cards {
+  height: 450px;
   position: relative;
 }
 
@@ -251,7 +268,6 @@ body {
   width: 100%;
 }
 
-
 .text-post-slide {
   text-align: left;
   font-size: 1rem;
@@ -289,7 +305,7 @@ body {
 
   .sidebar {
     display: block;
-  }  
+  }
 
   .logo {
     width: 60px;

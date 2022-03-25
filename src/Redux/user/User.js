@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'https://climate-fix-backend.herokuapp.com';
 const initialState = {
   name: '',
   email: '',
@@ -48,28 +48,42 @@ export const userReducer = (state = initialState, action) => {
 };
 
 const hitAPIWithSignupDetails = (details) => async (dispatch) => {
-  const { name, email } = details;
+  const { email, name } = details;
   try {
-    await axios({
+    const datasend = await fetch(`${baseUrl}/users`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      url: `${baseUrl}/users`,
-      user: {
-        name,
-        email,
-        paswword: '1234567',
-      },
+      body: JSON.stringify(
+        {
+          user: {
+            name,
+            email,
+            password: '12345678',
+          },
+        },
+      ),
     });
 
+    if (datasend.status === 200) {
+      dispatch(
+        signUp({
+          name: '',
+          email: '',
+          loggedIn: false,
+          userId: '',
+          signedUp: 'up',
+        }),
+      );
+    }
     dispatch(
       signUp({
         name: '',
         email: '',
         loggedIn: false,
         userId: '',
-        signedUp: 'up',
+        signedUp: 'err',
       }),
     );
   } catch (error) {
@@ -86,18 +100,18 @@ const hitAPIWithSignupDetails = (details) => async (dispatch) => {
 };
 
 export const hitAPIWithSigninDetails = (details) => async (dispatch) => {
-  const { email, name } = details;
+  const { email } = details;
   try {
     const signUpRespons = await axios({
       method: 'post',
       url: `${baseUrl}/users/sign_in`,
-      user: {
-        email,
-        name,
-        paswword: '1234567',
+      data: {
+        user: {
+          email,
+          password: '12345678',
+        },
       },
     });
-
     const { data, headers } = signUpRespons;
     const { user } = data;
     const { authorization } = headers;
@@ -117,11 +131,10 @@ export const hitAPIWithSigninDetails = (details) => async (dispatch) => {
     };
 
     localStorage.setItem('someRandomVitalData', JSON.stringify(loginData));
-
-    dispatch(signUp(mainUser));
+    dispatch(login(mainUser));
   } catch (error) {
     dispatch(
-      signUp({
+      login({
         name: '',
         email: '',
         loggedIn: 'err',

@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   Col, Container, Row, Button, Form,
 } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import hitAPIWithSignupDetails from '../../Redux/user/User';
+import hitAPIWithSignupDetails, { userReducer, login } from '../../Redux/user/User';
 import Bglogo from '../../images/auth/reg.png';
 import './auth.css';
 
@@ -12,13 +13,12 @@ const Register = () => {
   const navigate = useNavigate();
 
   function goToHomePage() {
-    navigate('/posts', { replace: true });
+    navigate('/login', { replace: true });
   }
 
   const dispatch = useDispatch();
   const state = useSelector((state) => state.user);
   const { signedUp } = state;
-  // eslint-disable-next-line no-unused-vars
   const [signUpSuccess, setSignUpSucess] = useState(signedUp);
 
   const [input, setInput] = useState({
@@ -28,6 +28,7 @@ const Register = () => {
 
   const handleInput = (event) => {
     const { name, value } = event.target;
+    if (signUpSuccess === 'err' && (name === 'email')) setSignUpSucess(() => '');
     setInput((prevInput) => ({
       ...prevInput,
       [name]: value,
@@ -57,6 +58,8 @@ const Register = () => {
       className="register"
     >
       <Row className="text-center pt-5 mx-md-5">
+        {signUpSuccess === 'up' && <p className="text-success py-2">You have succeesfully signed up!</p>}
+        {signUpSuccess === 'err' && <p className="text-danger py-2">Email already exists or bad connection!</p>}
         <Col xs={12} md={6} className="px-md-4">
           <div className="auth-image-container">
             <img className="auth-image mx-0" src={Bglogo} alt="logo" />

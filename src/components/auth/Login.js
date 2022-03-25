@@ -13,26 +13,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { loggedIn } = state.user;
-  const [input, setInput] = useState({
-    email: '',
-    name: '',
-  });
+  const [email, setEmail] = useState('');
 
-  // eslint-disable-next-line no-unused-vars
   const [signedInSuccess, setSignedInSuccess] = useState(loggedIn);
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    setInput((prevInput) => ({
-      ...prevInput,
-      [name]: value,
-    }));
-  };
 
   const handleSubmit = (event) => {
-    const { email, name } = input;
-    if (name && email) {
+    if (email) {
       event.preventDefault();
-      dispatch(hitAPIWithSigninDetails({ email, name }));
+      dispatch(hitAPIWithSigninDetails({ email }));
+      setEmail('');
       return true;
     }
     return false;
@@ -51,34 +40,26 @@ const Login = () => {
       className="register"
     >
       <Row className="text-center pt-5 mx-md-5">
+        {signedInSuccess === 'err' && <p className="text-danger py-2 text-bold">Email incorrect or bad connection!</p>}
         <Col xs={12} md={6} className="px-md-4">
           <div className="auth-image-container">
             <img className="auth-image mx-0" src={Bglogo} alt="logo" />
           </div>
         </Col>
         <Col xs={12} md={6} className="bg-white mx-0">
-          <Form className="form-reg">
+          <Form className="form-reg" onSubmit={handleSubmit}>
             <h3 className="text-center text-success mt-5 text-bold">Login</h3>
-            <Form.Group controlId="formBasicName">
-              <Form.Control
-                type="text"
-                placeholder="name"
-                onChange={handleInput}
-                value={input.name}
-                name="name"
-              />
-            </Form.Group>
             <Form.Group controlId="formBasicEmail" className="my-3">
               <Form.Control
                 type="email"
                 placeholder="Enter email"
-                onChange={handleInput}
-                value={input.email}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 name="email"
               />
             </Form.Group>
 
-            <Button variant="success" type="submit" className="my-3" onClick={handleSubmit}>
+            <Button variant="success" type="submit" className="my-3">
               Login
             </Button>
           </Form>

@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 const NewPost = () => {
+  const user = JSON.parse(window.localStorage.getItem('someRandomVitalData'));
+  const { userId } = user.mainUser;
   const [input, setInput] = useState({
     title: '',
-    text: '',
-    image: '',
+    description: '',
+    picture: '',
   });
 
   const handleInput = (event) => {
@@ -17,24 +19,27 @@ const NewPost = () => {
     }));
   };
 
-  const createNewPost = async () => {
-    const { title, text, image } = input;
-    if (title === '' || text === '' || image === '') {
-      return;
+  const createNewPost = async (event) => {
+    const { title, description } = input;
+    try {
+      if (title && description) {
+        event.preventDefault();
+        const data = await fetch(`http://localhost:3001/user/${userId}/posts`, {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title,
+            description,
+            picture: 'https://images.unsplash.com/photo-1510784722466-f2aa9c52fff6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+          }),
+        });
+        return data.json();
+      }
+    } catch (error) {
+      return error;
     }
-    const resp = await fetch('https://climate-fix-backend.herokuapp.com/users/1/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title,
-        text,
-        image,
-      }),
-    });
-    const data = await resp.text();
-    return data;
   };
   return (
     <div className="my-2 post-new container min-height">

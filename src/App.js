@@ -8,6 +8,8 @@ import Header from './components/header/Header';
 import Home from './components/home/Home';
 import VolunteerMain from './components/vounteer/VolunteerMain';
 import NewPost from './components/blog/NewPost';
+import OneProject from './components/projects/OneProject';
+import AllProject from './components/projects/AllProjects';
 
 const HeaderFooter = () => (
   <>
@@ -25,6 +27,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/posts/:id" element={<SingleBlogPost />} />
           <Route path="/posts" element={<AllBlog />} />
+          <Route path="/projects" element={<AllProject />} />
+          <Route path="/projects/:id" element={<OneProject />} />
           <Route path="/volunteer" element={<VolunteerMain />} />
           <Route path="/newpost" element={<NewPost />} />
         </Route>

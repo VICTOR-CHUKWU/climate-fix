@@ -22,7 +22,9 @@ const MainHead = () => {
             <Link to="/volunteer" style={{ textDecoration: 'none' }}>
               <span className="mx-3 d-none d-md-inline nav-text">Volunteer</span>
             </Link>
-            <Button variant="success" className="mx-3 d-none d-sm-inline btn-nav"> Donate</Button>
+            <Link to="/projects" style={{ textDecoration: 'none' }}>
+              <Button variant="success" className="mx-3 d-none d-sm-inline btn-nav"> Donate</Button>
+            </Link>
           </div>
         </Col>
         <Col xs={2} className="">
