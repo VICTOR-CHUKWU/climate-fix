@@ -24,7 +24,7 @@ const VolunteerMain = () => {
     fetchData();
   }, []);
   return (
-    <div className="min-heigth">
+    <div className="min-height">
       {
          Object.keys(data).length === 0 ? <h2>Loading</h2>
            : (
