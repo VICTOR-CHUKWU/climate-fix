@@ -83,7 +83,9 @@ const VolunteerMain = () => {
              </div>
 
              <div className="d-flex justify-content-center my-2">
-               <Button onClick={() => setDonate(!donate)}>Donate</Button>
+               <Button onClick={() => setDonate(!donate)}>
+                 { donate ? 'Close' : 'Donate'}
+               </Button>
              </div>
              {
                 donate ? (

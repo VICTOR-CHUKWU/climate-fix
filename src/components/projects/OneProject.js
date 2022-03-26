@@ -41,12 +41,12 @@ const SingleBlogPost = () => {
                   {' '}
                   {data.name}
                 </h2>
-                <h2 className="text-bold1 pl-3 align-center">
+                <h2 className="text-success text-bold1 pl-3 align-center">
                   Location:
                   {' '}
                   {data.location}
                 </h2>
-                <p className="pl-3 align-center">{data.description}</p>
+                <p className="pl-3 text-success align-center">{data.description}</p>
                 <div>
                   <p className="align-center">
                     project starts:

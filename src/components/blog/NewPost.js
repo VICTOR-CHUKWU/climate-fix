@@ -24,7 +24,7 @@ const NewPost = () => {
     try {
       if (title && description) {
         event.preventDefault();
-        const data = await fetch(`http://localhost:3001/user/${userId}/posts`, {
+        const data = await fetch(`https://climate-fix-backend.herokuapp.com/user/${userId}/posts`, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',

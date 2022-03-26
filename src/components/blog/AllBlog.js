@@ -13,7 +13,7 @@ const AllBlog = () => {
   const [data, setData] = useState([]);
   const fetchData = async () => {
     try {
-      const api = await axios.get('http://localhost:3001/posts');
+      const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts');
       const response = api.data;
       setData(response);
     } catch (e) {

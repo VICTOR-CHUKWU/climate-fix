@@ -17,7 +17,7 @@ const SingleBlogPost = () => {
   const [comment, setComment] = useState('');
   const fetchData = async () => {
     try {
-      const api = await axios.get(`http://localhost:3001/posts/${id}`);
+      const api = await axios.get(`https://climate-fix-backend.herokuapp.com/${id}`);
       const response = api.data;
       setData(response);
     } catch (e) {
