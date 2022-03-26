@@ -36,7 +36,16 @@ const SingleBlogPost = () => {
                 </div>
               </Col>
               <Col xs={12} className=" py-2 pl-3 pr-3 pl-md-5 pr-md-5 ">
-                <h2 className="text-bold pl-3 align-center">{data.location}</h2>
+                <h2 className="text-bold1 pl-3 align-center">
+                  Project:
+                  {' '}
+                  {data.name}
+                </h2>
+                <h2 className="text-bold1 pl-3 align-center">
+                  Location:
+                  {' '}
+                  {data.location}
+                </h2>
                 <p className="pl-3 align-center">{data.description}</p>
                 <div>
                   <p className="align-center">

@@ -10,14 +10,14 @@ import Join from '../Join';
 
 const SingleBlogPost = () => {
   const user = JSON.parse(window.localStorage.getItem('someRandomVitalData'));
-  const { userId } = user.mainUser;
+  const { userId } = user?.mainUser || 0;
   const defaultImage = 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   const { id } = useParams();
   const [data, setData] = useState({});
   const [comment, setComment] = useState('');
   const fetchData = async () => {
     try {
-      const api = await axios.get(`https://climate-fix-backend.herokuapp.com/posts/${id}`);
+      const api = await axios.get(`http://localhost:3001/posts/${id}`);
       const response = api.data;
       setData(response);
     } catch (e) {
@@ -48,7 +48,7 @@ const SingleBlogPost = () => {
                 <h2 className="text-bold pl-3">{data?.post.title}</h2>
                 <p className="pl-3">{data?.post.description}</p>
                 {
-                  userId === 'undefined' ? ''
+                  userId === undefined || userId === 0 ? ''
                     : (
                       <Form onSubmit={makeComment} className="ml-3">
                         <h3>Leave a Comment</h3>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -7,12 +8,12 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 const AllBlog = () => {
   const user = JSON.parse(window.localStorage.getItem('someRandomVitalData'));
-  const { userId } = user.mainUser;
+  const { userId } = user?.mainUser || 0;
   const defaultImage = 'https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTN8fG5hdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60';
   const [data, setData] = useState([]);
   const fetchData = async () => {
     try {
-      const api = await axios.get('https://climate-fix-backend.herokuapp.com/posts/');
+      const api = await axios.get('http://localhost:3001/posts');
       const response = api.data;
       setData(response);
     } catch (e) {
@@ -27,7 +28,7 @@ const AllBlog = () => {
     <Container className="mt-3 min-height">
       <div className="text-end my-2">
         {
-          userId === undefined ? ''
+          userId === 0 || userId === undefined ? ''
             : (
               <Link to="/newpost" style={{ textDecoration: 'none' }}>
                 {' '}

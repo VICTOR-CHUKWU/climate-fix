@@ -30,7 +30,7 @@ const AllBlog = () => {
               {
                data.map((project) => {
                  const {
-                   id, picture, description, location, start_date, end_date,
+                   id, picture, description, location, start_date, end_date, name,
                  } = project;
                  const dateStart = moment.utc(start_date).format('MM/DD/YYYY');
                  const dateEnd = moment.utc(end_date).format('MM/DD/YYYY');
@@ -39,6 +39,11 @@ const AllBlog = () => {
                      <Link to={`${id}`} style={{ textDecoration: 'none' }}>
                        <div className="shadow mx-1 project-cards">
                          <img className="image-post-slide" src={picture} alt="mne" />
+                         <div className="elipsis text-dark px-1 mt-2">
+                           Project:
+                           {' '}
+                           {name}
+                         </div>
                          <div className="elipsis text-dark px-1 mt-2">
                            Location:
                            {' '}

@@ -4,7 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 
 const NewPost = () => {
   const user = JSON.parse(window.localStorage.getItem('someRandomVitalData'));
-  const { userId } = user.mainUser;
+  const { userId } = user?.mainUser || 0;
   const [input, setInput] = useState({
     title: '',
     description: '',

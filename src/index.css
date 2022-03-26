@@ -227,6 +227,11 @@ body {
   margin-left: 0.3rem;
 }
 
+.text-bold1 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 .post-cards {
   height: 350px;
   position: relative;
